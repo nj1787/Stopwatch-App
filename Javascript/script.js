@@ -6,19 +6,28 @@ let timer;
 // Get elements from the DOM
 const display = document.getElementById("timeTracker");
 const logDisplay = document.getElementById("timelog-display");
-const startTimer = document.getElementById("start");
+const startStopTimer = document.getElementById("startStop");
 const stopTimer = document.getElementById("stop");
 const resetTimer = document.getElementById("reset");
 const logTimer = document.getElementById("log");
+let btnText;
 
 // Start/stop button event listener
-startTimer.addEventListener("click", function () {
-  start();
+startStopTimer.addEventListener("click", function (event) {
+  event.preventDefault();
+  btnText = !btnText;
+  if (btnText) {
+    startStopTimer.textContent = "Stop";
+    start();
+  } else {
+    startStopTimer.textContent = "Start";
+    stop();
+  }
 });
 
-stopTimer.addEventListener("click", function () {
-  stop();
-});
+// stopTimer.addEventListener("click", function () {
+//   stop();
+// });
 
 // Reset button event listener
 resetTimer.addEventListener("click", function () {
